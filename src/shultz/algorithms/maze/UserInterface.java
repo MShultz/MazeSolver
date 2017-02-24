@@ -2,7 +2,11 @@ package shultz.algorithms.maze;
 
 import java.util.Scanner;
 
+import algo.data.structures.GraphNode;
+import algo.data.structures.SingleLinkedList;
+
 public class UserInterface {
+	private int mazeCount = 0;
 	private Scanner scan = new Scanner(System.in);
 
 	public String getFile() {
@@ -16,5 +20,14 @@ public class UserInterface {
 			validFile = FileHandler.fileExists(file);
 		}
 		return file;
+	}
+
+	public void printShortestPathOfMaze(SingleLinkedList<GraphNode<String>> shortestDistance) {
+		System.out.println("Maze Number: " + mazeCount);
+		if (shortestDistance.size() > 1)
+			System.out.println(shortestDistance.toString());
+		else
+			System.out.println("There was no path between the nodes!");
+		++mazeCount;
 	}
 }

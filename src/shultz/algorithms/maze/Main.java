@@ -2,19 +2,19 @@ package shultz.algorithms.maze;
 
 import java.util.ArrayList;
 
+import algo.data.structures.Graph;
+
 public class Main {
 
 	public static void main(String[] args) {
 		UserInterface ui = new UserInterface();
 		String file = ui.getFile();
 		FileHandler handle = new FileHandler(file);
-		
-		for(ArrayList<String> list: handle.getAllMazes()){
-			for(String s: list){
-				System.out.println(s);
+		Maze mazeSolver = new Maze();
+		for(ArrayList<String> maze: handle.getAllMazes()){
+				Graph<String> currentMaze = mazeSolver.solve(maze);
+				ui.printShortestPathOfMaze(currentMaze.getShortestDistance());
 			}
-			System.out.println("\nNEXT LIST\n");
-		}
 
 	}
 
